@@ -12,10 +12,10 @@ const projectData = [
     ],
     video: { src: "/videos/emdm.mov" },
     links: [
-      { label: "Live Demo", url: "https://restaurant-demo.com" },
+      { label: "Live Demo", url: "https://mundodemariscos.com" },
       {
         label: "GitHub",
-        url: "https://github.com/yourusername/restaurant-project",
+        url: "https://github.com/rcbrian81/emdm.git",
       },
     ],
   },
