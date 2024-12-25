@@ -24,9 +24,11 @@ const ProjectCard = ({ title, description, text, images, videos, links }) => {
           <li key={index}>
             {point.text}
             {point.subpoints && (
-              <ul className="list-circle list-inside ml-4">
+              <ul className="list-disc list-inside ml-6">
+                {" "}
+                {/* Use ml-6 for indentation */}
                 {point.subpoints.map((subpoint, subIndex) => (
-                  <li key={subIndex}>{"    " + subpoint}</li>
+                  <li key={subIndex}>{subpoint}</li>
                 ))}
               </ul>
             )}
@@ -35,6 +37,7 @@ const ProjectCard = ({ title, description, text, images, videos, links }) => {
       </ul>
     );
   };
+
   return (
     <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden mb-8">
       <h3 className="text-2xl font-bold p-4">{title}</h3>
