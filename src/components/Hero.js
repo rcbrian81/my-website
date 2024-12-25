@@ -1,80 +1,89 @@
 export default function Hero({ projectId, resumeId }) {
   return (
-    <section className="flex justify-between items-center h-screen px-8 bg-gray-100">
-      <div>
-        <h1 className="text-5xl font-bold">Hi, I’m Brian Sanchez</h1>
-        <div className="flex flex-col mt-4">
-          <p className="text-xl ">California State University San Marcos</p>
-          <p className="text-xl">B.S. Computer Science</p>
-          <p className="text-xl">ABET Accredited</p>
-          <p className="text-xl">Aug 24'</p>
+    <section className="flex flex-col md:flex-row justify-between items-center h-auto md:h-screen px-6 md:px-12 bg-gray-50 py-8">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 space-y-6 mb-8 md:mb-0">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
+          Hi, I’m Brian Sanchez
+        </h1>
+        <div className="space-y-2">
+          <p className="text-lg md:text-xl text-gray-600">
+            California State University San Marcos
+          </p>
+          <p className="text-lg md:text-xl text-gray-600">
+            B.S. Computer Science
+          </p>
+          <p className="text-lg md:text-xl text-gray-600">ABET Accredited</p>
+          <p className="text-lg md:text-xl text-gray-600">Aug 24'</p>
         </div>
-        <div className="flex flex-col mt-4">
-          <p className="text-m ">rcbriansanchez@gmail.com</p>
-          <p className="">(760)-828-2465</p>
-          <p className="">135 Ely St, Oceanside, CA, 92054</p>
+        <div className="space-y-2">
+          <p className="text-gray-600">rcbriansanchez@gmail.com</p>
+          <p className="text-gray-600">(760)-828-2465</p>
+          <p className="text-gray-600">135 Ely St, Oceanside, CA, 92054</p>
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 h-full">
-        <div className="flex flex-col gap-4 h-1/2 b-4 b-black">
-          <a
-            href={`#${projectId}`}
-            className="px-4 py-2 bg-gray-800 text-white rounded-md text-center"
-          >
-            El Mundo De Mariscos Website
-          </a>
-          <ul className="flex flex-col">
-            <li className="flex-item mr-2">
-              <a
-                href="https://mundodemariscos.com"
-                target="_blank"
-                className="text-blue-600 hover:text-blue-800 underline"
-                rel="noopener noreferrer"
-              >
-                mundodemariscos.com
-              </a>
-            </li>
-            <li className="flex-item mr-2 ">SQLite Database</li>
-            <li className="flex-item mr-2">Session Managment</li>
-            <li className="flex-item mr-2">DoorDash API</li>
-            <li className="flex-item mr-2">Payment Processing</li>
-            <li className="flex-item mr-2">React.js/Next.js</li>
-            <li className="flex-item mr-2">Tailwind css</li>
-          </ul>
-          <a
-            href={`#${projectId}`}
-            className="px-4 py-2 bg-gray-800 text-white rounded-md text-center"
-          >
-            Magic Wand
-          </a>
-          <ul className="flex flex-col">
-            <li className="flex-item mr-2 ">Computer Vision</li>
-            <li className="flex-item mr-2">Machine Learing</li>
-            <li className="flex-item mr-2">Image Classification</li>
-            <li className="flex-item mr-2">IoT networking</li>
-            <li className="flex-item mr-2">RaspberryPi/Ubuntu</li>
-            <li className="flex-item mr-2">Thrid-Part API</li>
-            <li className="flex-item mr-2">Python Programing</li>
-          </ul>
-          <a
-            href={`#${projectId}`}
-            className="px-4 py-2 bg-gray-800 text-white rounded-md text-center"
-          >
-            100+ Auto Watering sytem
-          </a>
-          <ul className="flex flex-col">
-            <li className="flex-item mr-2 ">Arduino</li>
-            <li className="flex-item mr-2">Circuits</li>
-            <li className="flex-item mr-2">H-Bridge</li>
-            <li className="flex-item mr-2">
-              Reverse Poloarity Motorized Valve
-            </li>
-            <li className="flex-item mr-2">Solar Pannel/Batter</li>
-            <li className="flex-item mr-2">Soil Moisture Capacitive Sensor</li>
-            <li className="flex-item mr-2">c++ Programing</li>
-          </ul>
-        </div>
+      {/* Right Section */}
+      <div className="w-full md:w-1/2 flex flex-col items-center space-y-8">
+        {/* Project Cards */}
+        {[
+          {
+            title: "El Mundo De Mariscos Website",
+            link: `https://mundodemariscos.com`,
+            details: [
+              "SQLite Database",
+              "Session Management",
+              "DoorDash API",
+              "Payment Processing",
+              "React.js/Next.js",
+              "Tailwind CSS",
+            ],
+          },
+          {
+            title: "Magic Wand",
+            link: null,
+            details: [
+              "Computer Vision",
+              "Machine Learning",
+              "Image Classification",
+              "IoT Networking",
+              "Raspberry Pi/Ubuntu",
+              "Third-Party API",
+              "Python Programming",
+            ],
+          },
+          {
+            title: "100+ Auto Watering System",
+            link: null,
+            details: [
+              "Arduino",
+              "Circuits",
+              "H-Bridge",
+              "Reverse Polarity Motorized Valve",
+              "Solar Panel/Battery",
+              "Soil Moisture Capacitive Sensor",
+              "C++ Programming",
+            ],
+          },
+        ].map((project, index) => (
+          <div key={index} className="w-full">
+            <a
+              href={project.link ? project.link : `#${projectId}`}
+              target={project.link ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="block px-6 py-3 bg-gray-800 text-white text-center rounded-lg shadow-md hover:bg-gray-700 transition"
+            >
+              {project.title}
+            </a>
+            <ul className="mt-4 space-y-2 text-center text-gray-700">
+              {project.details.map((detail, idx) => (
+                <li key={idx} className="text-gray-600">
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );
