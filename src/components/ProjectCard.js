@@ -82,20 +82,29 @@ const ProjectCard = ({ title, description, text, images, videos, links }) => {
           <div className="flex flex-col justify-start items-start text-left">
             {/*<p className="text-gray-700">{description}</p>*/}
             {text && (
-              <p className="text-gray-700 text-xl">{text.description}</p>
-            )}
-            {text?.highlights?.length > 0 && (
               <div>
-                <h4 className="font-bold mt-4">Highlights:</h4>
-                {renderBulletPoints(text.highlights)}
+                <h4 className="font-bold mt-4">Description:</h4>
+                <p className="text-gray-700 text-xl">{text.description}</p>
               </div>
             )}
-            {text?.technologies?.length > 0 && (
-              <div>
-                <h4 className="font-bold mt-4">Technologies:</h4>
-                {renderBulletPoints(text.technologies)}
+            <div className="flex flex-row text-xl">
+              <div className="flex-item">
+                {text?.highlights?.length > 0 && (
+                  <div>
+                    <h4 className="font-bold mt-4">Highlights:</h4>
+                    {renderBulletPoints(text.highlights)}
+                  </div>
+                )}
               </div>
-            )}
+              <div className="flex-item">
+                {text?.technologies?.length > 0 && (
+                  <div>
+                    <h4 className="font-bold mt-4">Technologies:</h4>
+                    {renderBulletPoints(text.technologies)}
+                  </div>
+                )}
+              </div>
+            </div>
 
             {links && (
               <div className="flex gap-4 mt-4">
