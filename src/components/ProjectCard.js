@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectCard = ({ title, description, images, video, links }) => {
+const ProjectCard = ({ title, description, images, videos, links }) => {
   // Helper function to determine image layout classes
   const getImageLayoutClass = (count) => {
     switch (count) {
@@ -21,7 +21,6 @@ const ProjectCard = ({ title, description, images, video, links }) => {
     <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden mb-8">
       <h3 className="text-2xl font-bold p-4">{title}</h3>
 
-      {/* Images Section */}
       {images && images.length > 0 && (
         <div className={`grid ${getImageLayoutClass(images.length)} p-4`}>
           {images.map((image, index) => (
@@ -35,40 +34,52 @@ const ProjectCard = ({ title, description, images, video, links }) => {
         </div>
       )}
 
-      {/* Description and Video Section */}
-      <div className={`flex flex-col ${video ? "md:flex-row" : ""} p-4 gap-4`}>
-        {/* Text Section */}
-        <div className={`${video ? "md:w-1/2" : "w-full"}`}>
-          <p className="text-gray-700">{description}</p>
-          {links && (
-            <div className="flex gap-4 mt-4">
-              {links.map((link, index) => (
-                <a
+      {(videos && videos.length > 0) || description || links ? (
+        <div
+          className={`grid gap-4 ${
+            videos && videos.length > 0 ? "grid-cols-2" : "grid-cols-1"
+          } p-4`}
+        >
+          {videos && videos.length > 0 && (
+            <>
+              {videos.map((video, index) => (
+                <video
                   key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
+                  autoPlay
+                  muted
+                  loop
+                  controls
+                  className="w-full rounded-md"
                 >
-                  {link.label}
-                </a>
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               ))}
-            </div>
+            </>
           )}
-        </div>
 
-        {/* Video Section */}
-        {video && (
-          <div className="md:w-1/2">
-            <video autoPlay muted loop controls className="w-full rounded-md">
-              <source src={video.src} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="flex flex-col justify-start items-start text-left">
+            <p className="text-gray-700">{description}</p>
+            {links && (
+              <div className="flex gap-4 mt-4">
+                {links.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };
-
+///////
 export default ProjectCard;

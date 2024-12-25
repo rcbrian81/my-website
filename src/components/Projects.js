@@ -7,10 +7,14 @@ const projectData = [
     description:
       "A modern website for online ordering, built with React and Tailwind CSS.",
     images: [
-      { src: "/images/restaurant1.jpg", alt: "Restaurant homepage" },
-      { src: "/images/restaurant2.jpg", alt: "Menu page" },
+      { src: "/images/emdm_er.png", alt: "Restaurant homepage" },
+      { src: "/images/emdm_code.png", alt: "Menu page" },
     ],
-    video: { src: "/videos/emdm.mov" },
+    videos: [
+      // Changed from video to videos
+      { src: "/videos/emdm.mov" },
+      { src: "/videos/emdm_crud.mov" },
+    ],
     links: [
       { label: "Live Demo", url: "https://mundodemariscos.com" },
       {
@@ -24,9 +28,27 @@ const projectData = [
     description:
       "A Python app using OpenCV to track a wand's motion and draw shapes.",
     images: [
-      { src: "/images/wand-tracking.jpg", alt: "Wand tracking visualization" },
+      { src: "/images/mw_flow.png", alt: "Wand tracking visualization" },
+      { src: "/images/mw_epochs.png", alt: "Wand tracking visualization" },
+      { src: "/images/mw_data.png", alt: "Wand tracking visualization" },
+      { src: "/images/mw_model.png", alt: "Wand tracking visualization" },
     ],
-    video: { src: "/videos/magicwand.MOV" },
+    videos: [
+      // Changed from video to videos
+      { src: "/videos/magicwand.MOV" },
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/yourusername/wand-tracking" },
+    ],
+  },
+  {
+    title: "Off-Grid Automated Water Managment System",
+    description:
+      "A Python app using OpenCV to track a wand's motion and draw shapes.",
+    images: [
+      { src: "/images/arduino_box.JPG", alt: "Wand tracking visualization" },
+      { src: "/images/arduino_wires.JPG", alt: "Wand tracking visualization" },
+    ],
     links: [
       { label: "GitHub", url: "https://github.com/yourusername/wand-tracking" },
     ],
@@ -44,7 +66,7 @@ const Projects = () => {
             title={project.title}
             description={project.description}
             images={project.images}
-            video={project.video}
+            videos={project.videos} // Updated from video to videos
             links={project.links}
           />
         ))}
