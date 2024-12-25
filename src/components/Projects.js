@@ -1,11 +1,56 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
+const emdm_description =
+  "I was contracted to build a new mobile friendly website with online ordering & third-party delivery. The site allows the administrator to add, edit, or delete items to their online menu which is populated every time a user views the menu. Using stripe and door dash’s API’s the site allows the user to place an order, pay for the order and schedule delivery to their home. In addition to the sites normal pages I built a kitchen dashboard GUI meant be displayed in the restaurant in order to provide them real time updates on new Orders that are successfully processed. Please see the demos above. ";
+const edm_texts = {
+  description:
+    "I was contracted to build a new mobile friendly website with online ordering & third-party delivery. The site allows the administrator to add, edit, or delete items to their online menu which is populated every time a user views the menu. Using stripe and door dash’s API’s the site allows the user to place an order, pay for the order and schedule delivery to their home. In addition to the sites normal pages I built a kitchen dashboard GUI meant be displayed in the restaurant in order to provide them real time updates on new Orders that are successfully processed. Please see the demos above.",
+  highlights: [
+    { text: "Mobile-friendly design" },
+    {
+      text: "Online ordering and delivery integration",
+      subpoints: [
+        "Integrated Stripe for payment processing",
+        "Integrated DoorDash API for delivery scheduling",
+      ],
+    },
+    { text: "Admin features to manage the menu" },
+    {
+      text: "Real-time kitchen dashboard",
+      subpoints: [
+        "Provides updates on new orders",
+        "Shows order statuses in real time",
+      ],
+    },
+  ],
+  technologies: [
+    {
+      text: "Web Development",
+      subpoints: ["next.js/react.js", "Node.js", "JavaScript", "Tailwind CSS"],
+    },
+    {
+      text: "Database",
+      subpoints: ["SQLite Remote Database"],
+    },
+    {
+      text: "Third-Party API’s:",
+      subpoints: [
+        "Stripe Payment Processing",
+        "Door Dash White Label Delivery",
+      ],
+    },
+    {
+      text: "Sessions",
+      subpoints: ["User Authentication", "Cookies", "Session Management"],
+    },
+  ],
+};
 
 const projectData = [
   {
     title: "Restaurant Website",
-    description:
-      "A modern website for online ordering, built with React and Tailwind CSS.",
+    description: emdm_description,
+    text: edm_texts,
     images: [
       { src: "/images/emdm_er.png", alt: "Restaurant homepage" },
       { src: "/images/emdm_code.png", alt: "Menu page" },
@@ -27,6 +72,7 @@ const projectData = [
     title: "Wand Tracking App",
     description:
       "A Python app using OpenCV to track a wand's motion and draw shapes.",
+    text: edm_texts,
     images: [
       { src: "/images/mw_flow.png", alt: "Wand tracking visualization" },
       { src: "/images/mw_epochs.png", alt: "Wand tracking visualization" },
@@ -45,6 +91,7 @@ const projectData = [
     title: "Off-Grid Automated Water Managment System",
     description:
       "A Python app using OpenCV to track a wand's motion and draw shapes.",
+    text: edm_texts,
     images: [
       { src: "/images/arduino_box.JPG", alt: "Wand tracking visualization" },
       { src: "/images/arduino_wires.JPG", alt: "Wand tracking visualization" },
@@ -65,6 +112,7 @@ const Projects = () => {
             key={index}
             title={project.title}
             description={project.description}
+            text={project.text}
             images={project.images}
             videos={project.videos} // Updated from video to videos
             links={project.links}

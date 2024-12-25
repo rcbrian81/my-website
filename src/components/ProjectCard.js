@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectCard = ({ title, description, images, videos, links }) => {
+const ProjectCard = ({ title, description, text, images, videos, links }) => {
   // Helper function to determine image layout classes
   const getImageLayoutClass = (count) => {
     switch (count) {
@@ -17,6 +17,24 @@ const ProjectCard = ({ title, description, images, videos, links }) => {
     }
   };
 
+  const renderBulletPoints = (points) => {
+    return (
+      <ul className="list-disc list-inside">
+        {points.map((point, index) => (
+          <li key={index}>
+            {point.text}
+            {point.subpoints && (
+              <ul className="list-circle list-inside ml-4">
+                {point.subpoints.map((subpoint, subIndex) => (
+                  <li key={subIndex}>{"    " + subpoint}</li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  };
   return (
     <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden mb-8">
       <h3 className="text-2xl font-bold p-4">{title}</h3>
@@ -59,7 +77,23 @@ const ProjectCard = ({ title, description, images, videos, links }) => {
           )}
 
           <div className="flex flex-col justify-start items-start text-left">
-            <p className="text-gray-700">{description}</p>
+            {/*<p className="text-gray-700">{description}</p>*/}
+            {text && (
+              <p className="text-gray-700 text-xl">{text.description}</p>
+            )}
+            {text?.highlights?.length > 0 && (
+              <div>
+                <h4 className="font-bold mt-4">Highlights:</h4>
+                {renderBulletPoints(text.highlights)}
+              </div>
+            )}
+            {text?.technologies?.length > 0 && (
+              <div>
+                <h4 className="font-bold mt-4">Technologies:</h4>
+                {renderBulletPoints(text.technologies)}
+              </div>
+            )}
+
             {links && (
               <div className="flex gap-4 mt-4">
                 {links.map((link, index) => (
